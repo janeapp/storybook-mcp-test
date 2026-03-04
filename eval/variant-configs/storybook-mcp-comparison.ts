@@ -24,6 +24,19 @@ const config = {
 		},
 		{
 			...base,
+			id: 'with-instructions',
+			label: 'With agent instructions',
+			context: [
+				{
+					type: 'inline-prompt',
+					content:
+						"To get information about the design system, inspect the local project and package.json, where you'll find all the components. Don't use any pre-existing knowledge about the design system to perform the task.",
+				},
+			],
+			systemPrompts: ['system.agents.md'],
+		},
+		{
+			...base,
 			id: 'with-mcp',
 			label: 'With Storybook MCP Docs',
 			context: [
