@@ -6,7 +6,8 @@
       "Text",
       "TextInput",
       "Tooltip",
-      "useTooltip"
+      "useTooltip",
+      "vars"
     ],
     "@janeapp/burrito-design-system/icons": ["CircleCheck", "CircleInfo"]
   }

@@ -48,6 +48,20 @@ const config = {
 				},
 			],
 		},
+		{
+			...base,
+			id: 'with-mcp-and-instructions',
+			label: 'With MCP and agent instructions',
+			context: [
+				{ type: 'storybook-mcp-docs' },
+				{
+					type: 'inline-prompt',
+					content:
+						'Use `storybook-docs-mcp` tool `list-all-documentation` and `get-documentation` to get information about the used design system components and figure out how to use them before importing components from a design system.',
+				},
+			],
+			systemPrompts: ['system.agents.md'],
+		},
 	],
 } satisfies VariantConfigInput;
 
