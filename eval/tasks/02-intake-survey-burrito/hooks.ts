@@ -18,7 +18,7 @@ const hooks: Hooks = {
     log.success("Burrito Design System installed successfully.");
 
     log.message("Installing Playwright browsers");
-    const require = createRequire(import.meta.url);
+    const require = createRequire(join(trialArgs.projectPath, "package.json"));
     const playwrightCli = join(dirname(require.resolve("playwright")), "cli.js");
     const result = spawnSync("node", [playwrightCli, "install", "chromium"], {
       stdio: "pipe",
