@@ -7,3 +7,7 @@ Example:
 ```ts
 import { vars } from '@janeapp/burrito-design-system'
 ```
+
+## Forms
+
+Always add `noValidate` to a `<form>` element to suppress HTML form validation.

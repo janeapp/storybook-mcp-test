@@ -1,4 +1,6 @@
+import * as v from 'valibot';
 import type { TrialArgs, McpServerConfig } from '../types.ts';
+import { McpServerConfigSchema } from '../types.ts';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import { addDependency, installDependencies } from 'nypm';
@@ -72,15 +74,23 @@ export async function prepareTrial(trialArgs: TrialArgs): Promise<PrepareTrialRe
 	});
 
 	if (isDocsContext(trialArgs.context)) {
-		result.mcpServerConfig!['storybook-docs-mcp'] = {
-			type: 'stdio',
-			command: 'node',
-			args: [
-				path.join(process.cwd(), '..', 'packages', 'mcp', 'bin.ts'),
-				'--manifestsDir',
-				path.join(trialArgs.taskPath, 'manifests'),
-			],
-		};
+		const mcpConfigPath = path.join(trialArgs.taskPath, 'mcp.config.json');
+		const hasMcpConfig = await fs.access(mcpConfigPath).then(() => true).catch(() => false);
+		if (hasMcpConfig) {
+			const { default: taskMcpConfig } = await import(mcpConfigPath, { with: { type: 'json' } });
+			const parsed = v.parse(McpServerConfigSchema, taskMcpConfig);
+			result.mcpServerConfig = { ...result.mcpServerConfig, ...parsed };
+		} else {
+			result.mcpServerConfig!['storybook-docs-mcp'] = {
+				type: 'stdio',
+				command: 'node',
+				args: [
+					path.join(process.cwd(), '..', 'packages', 'mcp', 'bin.ts'),
+					'--manifestsDir',
+					path.join(trialArgs.taskPath, 'manifests'),
+				],
+			};
+		}
 	}
 
 	if (isDevContext(trialArgs.context)) {

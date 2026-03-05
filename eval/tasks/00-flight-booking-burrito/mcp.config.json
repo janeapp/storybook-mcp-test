@@ -1,6 +1,6 @@
 {
-	"reshaped-mcp": {
+	"burrito-storybook-mcp": {
 		"type": "http",
-		"url": "http://localhost:3001/mcp"
+		"url": "https://jane.runlayer.com/api/v1/proxy/6b0d8cbc-ac65-42b4-9356-4623b5a0d61c/mcp"
 	}
 }

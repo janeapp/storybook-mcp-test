@@ -44,7 +44,7 @@ const config = {
 				{
 					type: 'inline-prompt',
 					content:
-						'Use `storybook-docs-mcp` tool `list-all-documentation` and `get-documentation` to get information about the used design system components and figure out how to use them before importing components from a design system.',
+						'Use the available storybook MCP documentation tools (`list-all-documentation` and `get-documentation`) to get information about the used design system components and figure out how to use them before importing components from a design system.',
 				},
 			],
 		},
@@ -57,7 +57,7 @@ const config = {
 				{
 					type: 'inline-prompt',
 					content:
-						'Use `storybook-docs-mcp` tool `list-all-documentation` and `get-documentation` to get information about the used design system components and figure out how to use them before importing components from a design system.',
+						'Use the available storybook MCP documentation tools (`list-all-documentation` and `get-documentation`) to get information about the used design system components and figure out how to use them before importing components from a design system.',
 				},
 			],
 			systemPrompts: ['system.agents.md'],
