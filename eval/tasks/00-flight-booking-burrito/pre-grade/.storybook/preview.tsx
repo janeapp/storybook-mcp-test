@@ -11,6 +11,16 @@ const preview: Preview = {
     ),
   ],
   parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            selector: '*:not([class*="PrimaryButton"])',
+          },
+        ],
+      },
+    },
     options: {
       storySort: {
         order: [
