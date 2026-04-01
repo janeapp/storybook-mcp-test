@@ -24,6 +24,19 @@ const config = {
 		},
 		{
 			...base,
+			id: 'with-instructions',
+			label: 'With agent instructions',
+			context: [
+				{
+					type: 'inline-prompt',
+					content:
+						"To get information about the design system, inspect the local project and package.json, where you'll find all the components. Don't use any pre-existing knowledge about the design system to perform the task.",
+				},
+			],
+			systemPrompts: ['system.agents.md'],
+		},
+		{
+			...base,
 			id: 'with-mcp',
 			label: 'With Storybook MCP Docs',
 			context: [
@@ -31,9 +44,23 @@ const config = {
 				{
 					type: 'inline-prompt',
 					content:
-						'Use `storybook-docs-mcp` tool `list-all-documentation` and `get-documentation` to get information about the used design system components and figure out how to use them before importing components from a design system.',
+						'Use the available storybook MCP documentation tools (`list-all-documentation` and `get-documentation`) to get information about the used design system components and figure out how to use them before importing components from a design system.',
 				},
 			],
+		},
+		{
+			...base,
+			id: 'with-mcp-and-instructions',
+			label: 'With MCP and agent instructions',
+			context: [
+				{ type: 'storybook-mcp-docs' },
+				{
+					type: 'inline-prompt',
+					content:
+						'Use the available storybook MCP documentation tools (`list-all-documentation` and `get-documentation`) to get information about the used design system components and figure out how to use them before importing components from a design system.',
+				},
+			],
+			systemPrompts: ['system.agents.md'],
 		},
 	],
 } satisfies VariantConfigInput;

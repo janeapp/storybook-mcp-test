@@ -232,8 +232,8 @@ async function chooseConfig(
 async function askIterations(): Promise<number> {
 	const iterations = await p.text({
 		message: 'How many iterations per variant?',
-		defaultValue: '10',
-		placeholder: '10',
+		defaultValue: '1',
+		placeholder: '1',
 	});
 
 	ensureNotCancelled(iterations);

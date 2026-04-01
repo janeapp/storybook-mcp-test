@@ -348,6 +348,8 @@ export const claudeCodeCli: Agent = {
 					// if the MCP server is not connected by now, the agent will not be able to use it
 					if (server.status === 'connected') {
 						clackLog.success(`MCP server "${server.name}" connected`);
+					} else if (server.status === 'disabled') {
+						clackLog.info(`MCP server "${server.name}" is disabled, skipping`);
 					} else {
 						clackLog.error(
 							`MCP server "${server.name}" failed to connect (status: ${server.status})`,

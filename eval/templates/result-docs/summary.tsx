@@ -56,6 +56,8 @@ interface SummaryProps {
 	};
 	mcpTools?: McpToolsSummary;
 	quality?: QualityResult;
+	variantLabel?: string;
+	runId?: string;
 }
 
 const StatusBadge = ({
@@ -360,7 +362,15 @@ export const Summary = (props: SummaryProps) => {
 
 	return (
 		<div style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem' }}>
-			<h1 style={{ marginTop: 0 }}>Grading Summary</h1>
+			<h1 style={{ marginTop: 0 }}>
+				Grading Summary
+			</h1>
+			{props.variantLabel && <h3 style={{ marginTop: '1em' }}	>{props.variantLabel}</h3>}
+			{props.runId && (
+				<p style={{ marginTop: '-0.5em', marginBottom: '2rem', color: '#6b7280', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+					<strong>Run ID</strong>: {props.runId}
+				</p>
+			)}
 
 			<div style={{ marginBottom: '2rem' }}>
 				<h2

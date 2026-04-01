@@ -27,6 +27,7 @@ export type RunTaskParams = {
 	verbose?: boolean;
 	storybook?: boolean;
 	runId?: string;
+	variantLabel?: string;
 	quiet?: boolean;
 	label?: string;
 };
@@ -47,6 +48,7 @@ export async function runTask({
 	uploadId,
 	verbose = false,
 	runId,
+	variantLabel,
 	quiet = false,
 	label,
 }: RunTaskParams): Promise<RunTaskResult> {
@@ -145,7 +147,7 @@ export async function runTask({
 
 	await fs.writeFile(
 		path.join(resultsPath, 'summary.json'),
-		JSON.stringify({ ...executionSummary, ...gradingSummary }, null, 2),
+		JSON.stringify({ ...executionSummary, ...gradingSummary, runId, variantLabel }, null, 2),
 	);
 
 	if (!quiet) {

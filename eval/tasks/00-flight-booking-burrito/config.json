@@ -1,0 +1,14 @@
+{
+  "expectedImports": {
+    "@janeapp/burrito-design-system": [
+      "Button",
+      "ButtonGroup",
+      "Card",
+      "FormField",
+      "Heading",
+      "PrimaryButton",
+      "TextInput",
+      "vars"
+    ]
+  }
+}

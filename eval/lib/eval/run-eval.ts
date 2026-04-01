@@ -181,6 +181,7 @@ function createWorkerPayload(args: EvalArgs, request: RunRequest): RunTaskParams
 		verbose: request.verbose ?? false,
 		storybook: request.storybook,
 		runId: args.runId,
+		variantLabel: request.variantLabel,
 		quiet: true,
 		label: request.label,
 	};
