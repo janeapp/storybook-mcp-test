@@ -9,13 +9,26 @@ import { createRequire } from "node:module";
 const hooks: Hooks = {
   postPrepareTrial: async (trialArgs) => {
     log.message("Installing the @janeapp/burrito-design-system package");
-
     await addDependency("@janeapp/burrito-design-system@latest", {
       cwd: trialArgs.projectPath,
       silent: true,
     });
-
     log.success("Burrito Design System installed successfully.");
+
+    log.message("Installing the React Aria packages");
+    await addDependency("react-aria@latest", {
+      cwd: trialArgs.projectPath,
+      silent: true,
+    });
+    await addDependency("react-aria-components@latest", {
+      cwd: trialArgs.projectPath,
+      silent: true,
+    });
+    await addDependency("react-stately@latest", {
+      cwd: trialArgs.projectPath,
+      silent: true,
+    });
+    log.success("React Aria installed successfully.");
 
     log.message("Installing Playwright browsers");
     const require = createRequire(join(trialArgs.projectPath, "package.json"));
